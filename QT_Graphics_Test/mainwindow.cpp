@@ -73,9 +73,6 @@ void MainWindow::paintEvent(QPaintEvent *)
     shakar(painter);
 
 
-
-
-
     painter.setPen(QPen(Qt::green, 10, Qt::SolidLine, Qt::RoundCap));
 
     pos_x += delta_x;

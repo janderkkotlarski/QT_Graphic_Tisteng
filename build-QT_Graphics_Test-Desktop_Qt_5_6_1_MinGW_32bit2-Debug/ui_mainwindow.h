@@ -51,7 +51,7 @@ public:
         label->setGeometry(QRect(100, 80, 181, 17));
         dial = new QDial(centralWidget);
         dial->setObjectName(QStringLiteral("dial"));
-        dial->setGeometry(QRect(480, 80, 50, 64));
+        dial->setGeometry(QRect(510, 130, 50, 64));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));

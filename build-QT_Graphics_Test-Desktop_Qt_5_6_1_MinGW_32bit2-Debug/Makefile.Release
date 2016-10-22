@@ -13,7 +13,7 @@ CC            = gcc
 CXX           = g++
 DEFINES       = -DUNICODE -DQT_QML_DEBUG -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_NEEDS_QMAIN
 CFLAGS        = -pipe -fno-keep-inline-dllexport -O2 -Wall -Wextra $(DEFINES)
-CXXFLAGS      = -pipe -fno-keep-inline-dllexport -O2 -std=gnu++0x -frtti -Wall -Wextra -fexceptions -mthreads $(DEFINES)
+CXXFLAGS      = -pipe -fno-keep-inline-dllexport -std=c++11 -Wall -Wextra -O2 -std=gnu++0x -frtti -Wall -Wextra -fexceptions -mthreads $(DEFINES)
 INCPATH       = -I..\QT_Graphics_Test -I. -I..\..\..\Qt\5.6\mingw49_32\include -I..\..\..\Qt\5.6\mingw49_32\include\QtWidgets -I..\..\..\Qt\5.6\mingw49_32\include\QtGui -I..\..\..\Qt\5.6\mingw49_32\include\QtANGLE -I..\..\..\Qt\5.6\mingw49_32\include\QtCore -Irelease -I. -I..\..\..\Qt\5.6\mingw49_32\mkspecs\win32-g++ 
 LINKER      =        g++
 LFLAGS        =        -Wl,-s -Wl,-subsystem,windows -mthreads
@@ -454,7 +454,55 @@ release/mainwindow.o: ../QT_Graphics_Test/mainwindow.cpp ../QT_Graphics_Test/mai
 		../../../Qt/5.6/mingw49_32/include/QtGui/qpainter.h \
 		../../../Qt/5.6/mingw49_32/include/QtGui/qtextoption.h \
 		../../../Qt/5.6/mingw49_32/include/QtGui/qpen.h \
-		ui_mainwindow.h
+		../../../Qt/5.6/mingw49_32/include/QtCore/QTimer \
+		../../../Qt/5.6/mingw49_32/include/QtCore/qtimer.h \
+		../../../Qt/5.6/mingw49_32/include/QtCore/qbasictimer.h \
+		ui_mainwindow.h \
+		../../../Qt/5.6/mingw49_32/include/QtCore/QVariant \
+		../../../Qt/5.6/mingw49_32/include/QtWidgets/QAction \
+		../../../Qt/5.6/mingw49_32/include/QtWidgets/qaction.h \
+		../../../Qt/5.6/mingw49_32/include/QtWidgets/qactiongroup.h \
+		../../../Qt/5.6/mingw49_32/include/QtWidgets/QApplication \
+		../../../Qt/5.6/mingw49_32/include/QtWidgets/qapplication.h \
+		../../../Qt/5.6/mingw49_32/include/QtCore/qcoreapplication.h \
+		../../../Qt/5.6/mingw49_32/include/QtCore/qeventloop.h \
+		../../../Qt/5.6/mingw49_32/include/QtWidgets/qdesktopwidget.h \
+		../../../Qt/5.6/mingw49_32/include/QtGui/qguiapplication.h \
+		../../../Qt/5.6/mingw49_32/include/QtGui/qinputmethod.h \
+		../../../Qt/5.6/mingw49_32/include/QtWidgets/QButtonGroup \
+		../../../Qt/5.6/mingw49_32/include/QtWidgets/qbuttongroup.h \
+		../../../Qt/5.6/mingw49_32/include/QtWidgets/QDial \
+		../../../Qt/5.6/mingw49_32/include/QtWidgets/qdial.h \
+		../../../Qt/5.6/mingw49_32/include/QtWidgets/qabstractslider.h \
+		../../../Qt/5.6/mingw49_32/include/QtWidgets/QHeaderView \
+		../../../Qt/5.6/mingw49_32/include/QtWidgets/qheaderview.h \
+		../../../Qt/5.6/mingw49_32/include/QtWidgets/qabstractitemview.h \
+		../../../Qt/5.6/mingw49_32/include/QtWidgets/qabstractscrollarea.h \
+		../../../Qt/5.6/mingw49_32/include/QtWidgets/qframe.h \
+		../../../Qt/5.6/mingw49_32/include/QtCore/qabstractitemmodel.h \
+		../../../Qt/5.6/mingw49_32/include/QtCore/qitemselectionmodel.h \
+		../../../Qt/5.6/mingw49_32/include/QtWidgets/qabstractitemdelegate.h \
+		../../../Qt/5.6/mingw49_32/include/QtWidgets/qstyleoption.h \
+		../../../Qt/5.6/mingw49_32/include/QtWidgets/qabstractspinbox.h \
+		../../../Qt/5.6/mingw49_32/include/QtGui/qvalidator.h \
+		../../../Qt/5.6/mingw49_32/include/QtCore/qregularexpression.h \
+		../../../Qt/5.6/mingw49_32/include/QtWidgets/qslider.h \
+		../../../Qt/5.6/mingw49_32/include/QtWidgets/qstyle.h \
+		../../../Qt/5.6/mingw49_32/include/QtWidgets/qtabbar.h \
+		../../../Qt/5.6/mingw49_32/include/QtWidgets/qrubberband.h \
+		../../../Qt/5.6/mingw49_32/include/QtWidgets/QLabel \
+		../../../Qt/5.6/mingw49_32/include/QtWidgets/qlabel.h \
+		../../../Qt/5.6/mingw49_32/include/QtWidgets/QMenuBar \
+		../../../Qt/5.6/mingw49_32/include/QtWidgets/qmenubar.h \
+		../../../Qt/5.6/mingw49_32/include/QtWidgets/qmenu.h \
+		../../../Qt/5.6/mingw49_32/include/QtWidgets/QPushButton \
+		../../../Qt/5.6/mingw49_32/include/QtWidgets/qpushbutton.h \
+		../../../Qt/5.6/mingw49_32/include/QtWidgets/qabstractbutton.h \
+		../../../Qt/5.6/mingw49_32/include/QtWidgets/QStatusBar \
+		../../../Qt/5.6/mingw49_32/include/QtWidgets/qstatusbar.h \
+		../../../Qt/5.6/mingw49_32/include/QtWidgets/QToolBar \
+		../../../Qt/5.6/mingw49_32/include/QtWidgets/qtoolbar.h \
+		../../../Qt/5.6/mingw49_32/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\mainwindow.o ..\QT_Graphics_Test\mainwindow.cpp
 
 release/moc_mainwindow.o: release/moc_mainwindow.cpp 
