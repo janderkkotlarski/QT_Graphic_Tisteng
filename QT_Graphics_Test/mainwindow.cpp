@@ -2,6 +2,7 @@
 
 #include <QKeyEvent>
 #include <QPainter>
+#include <QTimer>
 #include "ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -10,6 +11,16 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     QObject::connect(ui->pushButton,SIGNAL(clicked()),this,SLOT(OnClick()));
+    {
+        QTimer * const timer{new QTimer(this)};
+        QObject::connect(timer, SIGNAL(timeout()),this,SLOT(repaint()));
+        timer->start(100);
+
+        min_x = static_cast<int>(0.5*this->height());
+        max_x = static_cast<int>(1.0*this->height());
+
+        pos_x = static_cast<int>(0.75*this->height());
+    }
 }
 
 MainWindow::~MainWindow()
@@ -42,18 +53,45 @@ void MainWindow::keyPressEvent(QKeyEvent * event)
 
 }
 
-
 void MainWindow::paintEvent(QPaintEvent *)
 {
+    if (init)
+    {
+
+
+        init = false;
+    }
+
+
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing, true);
     painter.setPen(QPen(Qt::red, 10, Qt::SolidLine, Qt::RoundCap));
     painter.setBrush(QBrush(Qt::blue, Qt::SolidPattern));
     painter.drawEllipse(100, 120, 300, 100);
 
+
+    shakar(painter);
+
+
+
+
+
     painter.setPen(QPen(Qt::green, 10, Qt::SolidLine, Qt::RoundCap));
 
-    painter.drawText(100, 100, "x");
+    pos_x += delta_x;
+    painter.drawText(pos_x, pos_x, "x");
 
+    if (pos_x < min_x || pos_x > max_x)
+    {
+        delta_x *= -1;
+    }
+}
+
+void MainWindow::shakar(QPainter& painter)
+{
+
+    painter.setPen(QPen(Qt::yellow, 10, Qt::SolidLine, Qt::RoundCap));
+    painter.setBrush(QBrush(Qt::red, Qt::SolidPattern));
+    painter.drawEllipse(300, 250, 50, 100);
 
 }
