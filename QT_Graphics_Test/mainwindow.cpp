@@ -10,17 +10,36 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
     QObject::connect(ui->pushButton,SIGNAL(clicked()),this,SLOT(OnClick()));
+
     {
         QTimer * const timer{new QTimer(this)};
         QObject::connect(timer, SIGNAL(timeout()),this,SLOT(repaint()));
+
         timer->start(100);
 
         min_x = static_cast<int>(0.5*this->height());
         max_x = static_cast<int>(1.0*this->height());
 
         pos_x = static_cast<int>(0.75*this->height());
+
+        cent_x = 0.1*this->width();
+        cent_y = 0.1*this->height();
+
+        if (cent_x < cent_y)
+        {
+            radius = 0.25*this->width();
+        }
+        else
+        {
+            radius = 0.25*this->height();
+        }
+
     }
+
+    ui->dial->pos()& = new QPoint(9, 9);
+    // ui->dial->pos().setY(static_cast<int>(0));
 }
 
 MainWindow::~MainWindow()
@@ -53,6 +72,15 @@ void MainWindow::keyPressEvent(QKeyEvent * event)
 
 }
 
+void MainWindow::circling()
+{
+    dial_x = cent_x;
+    dial_y = cent_y;
+
+    ui->dial->pos().setY(cent_x);
+    ui->dial->pos().setY(cent_x);
+}
+
 void MainWindow::paintEvent(QPaintEvent *)
 {
     if (init)
@@ -82,6 +110,8 @@ void MainWindow::paintEvent(QPaintEvent *)
     {
         delta_x *= -1;
     }
+
+    circling();
 }
 
 void MainWindow::shakar(QPainter& painter)
