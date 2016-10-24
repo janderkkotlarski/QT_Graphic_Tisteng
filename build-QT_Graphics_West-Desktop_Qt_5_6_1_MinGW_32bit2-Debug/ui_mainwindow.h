@@ -52,7 +52,7 @@ public:
         label->setGeometry(QRect(100, 80, 181, 17));
         dial = new QDial(centralWidget);
         dial->setObjectName(QStringLiteral("dial"));
-        dial->setGeometry(QRect(340, 70, 50, 64));
+        dial->setGeometry(QRect(370, 70, 50, 64));
         dial_2 = new QDial(centralWidget);
         dial_2->setObjectName(QStringLiteral("dial_2"));
         dial_2->setGeometry(QRect(460, 60, 50, 64));

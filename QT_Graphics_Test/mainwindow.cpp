@@ -38,7 +38,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     }
 
-    ui->dial->pos()& = new QPoint(9, 9);
+    // ui->dial->pos()& = new QPoint(9, 9);
     // ui->dial->pos().setY(static_cast<int>(0));
 }
 
@@ -100,16 +100,15 @@ void MainWindow::paintEvent(QPaintEvent *)
 
     shakar(painter);
 
-
     painter.setPen(QPen(Qt::green, 10, Qt::SolidLine, Qt::RoundCap));
 
-    pos_x += delta_x;
-    painter.drawText(pos_x, pos_x, "x");
 
-    if (pos_x < min_x || pos_x > max_x)
-    {
-        delta_x *= -1;
-    }
+    const float radius{ui->dial_2->sliderPosition()};
+    const float phi{ui->dial->sliderPosition()};
+
+
+
+    painter.drawText(radius, phi, "x");
 
     circling();
 }
