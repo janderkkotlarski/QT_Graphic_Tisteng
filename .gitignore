@@ -1,6 +1,2 @@
-debug/
-Makefile
-Makefile.*
+buil-*
 *.pro.user
-.qmake.stash
-build-*/
