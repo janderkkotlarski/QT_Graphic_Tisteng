@@ -106,9 +106,10 @@ void MainWindow::paintEvent(QPaintEvent *)
     const float radius{ui->dial_2->sliderPosition()};
     const float phi{ui->dial->sliderPosition()};
 
+    const char ratius{radius};
 
 
-    painter.drawText(radius, phi, "x");
+    painter.drawText(radius, radius, static_cast<QString>(ratius));
 
     circling();
 }
