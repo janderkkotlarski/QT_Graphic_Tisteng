@@ -24,8 +24,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
         pos_x = static_cast<int>(0.75*this->height());
 
-        cent_x = 0.1*this->width();
-        cent_y = 0.1*this->height();
+        cent_x = 0.5*this->width();
+        cent_y = 0.5*this->height();
 
         if (cent_x < cent_y)
         {
@@ -77,8 +77,7 @@ void MainWindow::circling()
     dial_x = cent_x;
     dial_y = cent_y;
 
-    ui->dial->pos().setY(cent_x);
-    ui->dial->pos().setY(cent_x);
+
 }
 
 void MainWindow::paintEvent(QPaintEvent *)
@@ -103,13 +102,38 @@ void MainWindow::paintEvent(QPaintEvent *)
     painter.setPen(QPen(Qt::green, 10, Qt::SolidLine, Qt::RoundCap));
 
 
-    const float radius{ui->dial_2->sliderPosition()};
-    const float phi{ui->dial->sliderPosition()};
+    const int radius{ui->dial_2->sliderPosition()};
+    const int phi{static_cast<int>(static_cast<float>(ui->dial->sliderPosition())/0.01)};
 
-    const char ratius{radius};
+    const char ratius{static_cast<char>(radius)};
+
+    const int x_pos{static_cast<int>(cent_x + radius*cos(phi))};
+    const int y_pos{static_cast<int>(cent_y + radius*sin(phi))};
 
 
-    painter.drawText(radius, radius, static_cast<QString>(ratius));
+
+    painter.drawText(x_pos, y_pos, "*");
+
+
+    painter.drawRect(400, 200, 100, 50);
+
+
+    painter.drawArc(cent_x, cent_y, radius, radius, 0, phi);
+
+    painter.drawEllipse(100, 50, 20, 40);
+
+    QPoint m_pos = this->mapFromParent(QCursor::pos());
+
+    QPoint n_pos;
+
+    n_pos.rx() = m_pos.ry();
+    n_pos.ry() = m_pos.rx();
+
+
+
+    painter.drawText(m_pos, "achterlijk");
+
+    painter.drawText(n_pos, "Choukai suki da!");
 
     circling();
 }
