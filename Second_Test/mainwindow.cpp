@@ -10,8 +10,8 @@ MainWindow::MainWindow(QWidget *parent) :
     // QObject::connect(ui->pushButton,SIGNAL(clicked()),this,SLOT(OnClick()));
 
     // QObject::connect(ui->checkBox,SIGNAL(toggled(bool)),this,SLOT(showMaximized()));
-    QObject::connect(ui->checkBox,SIGNAL(isChecked(bool)),this,SLOT(showMaximized()));
-    QObject::connect(ui->checkBox,SIGNAL(isUnchecked(bool)),this,SLOT(showMaximized()));
+    // QObject::connect(ui->checkBox,SIGNAL(isChecked(bool)),this,SLOT(showMaximized()));
+    // QObject::connect(ui->checkBox,SIGNAL(isUnchecked(bool)),this,SLOT(showMaximized()));
     // QObject::connect(ui->checkBox,SIGNAL(released()),this,SLOT(showNormal()));
 }
 
